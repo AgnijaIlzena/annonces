@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Compte{% endblock %}
+
+{% block body %}
+
+{% include 'components/_header.html.twig' %}
+<main role="main">
+ 
+
+    {# <div class="d-flex align-items-center justify-content-between pb-5"> #}
+        <div class="text-center my-5">
+            <h1 class="m-0">{{greeting}}  {{ app.user.firstName }} {{ app.user.nom }}</h1>
+            {# <p class="lead">{{greeting}} {{ app.user.email }}</p> #}
+        </div>
+    {# </div> #}
+</main>
+{% endblock %}

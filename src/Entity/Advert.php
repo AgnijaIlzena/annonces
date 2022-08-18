@@ -24,7 +24,7 @@ class Advert
     private ?string $cover = null;
 
     #[ORM\Column]
-    private ?int $phone = null;
+    private ?string $phone = null;
 
     #[ORM\Column]
     private ?int $postCode = null;
@@ -73,12 +73,12 @@ class Advert
         return $this;
     }
 
-    public function getPhone(): ?int
+    public function getPhone(): ?string
     {
         return $this->phone;
     }
 
-    public function setPhone(int $phone): self
+    public function setPhone(string $phone): self
     {
         $this->phone = $phone;
 

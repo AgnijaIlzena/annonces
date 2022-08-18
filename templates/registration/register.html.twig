@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer un compte{% endblock %}
+
+{% block body %}
+    {% include 'components/_header.html.twig' %}
+        <main role="main">    
+        
+            {% for flash_error in app.flashes('verify_email_error') %}
+                <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+            {% endfor %}
+
+            <div class=" text-center py-5">
+                <h1>Créer un compte </h1>
+            </div>
+
+            <div class="w-50 mx-auto mb-5">
+            {{ form(registrationForm) }}
+            </div>
+
+        </main>
+{% endblock %}

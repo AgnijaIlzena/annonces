@@ -32,7 +32,8 @@ class RegistrationFormType extends AbstractType
                     new Email([
                         'message' => 'Cet adresse e-mail est invalide'
                     ])
-                ]
+                    ],
+                    'required'=>false,
             ])
 
             ->add('plainPassword', RepeatedType::class, [
@@ -54,6 +55,7 @@ class RegistrationFormType extends AbstractType
                         'max' => 4096,
                     ]),
                 ],
+                'required'=>false,
             ])
 
             ->add('firstName', TextType::class, [
@@ -62,7 +64,8 @@ class RegistrationFormType extends AbstractType
                     new NotBlank([
                         'message' => 'Le prénom est obligatoire'
                     ])
-                ]
+                    ],
+                    'required'=>false,
             ])
             ->add('nom', TextType::class, [
                 'label' => 'Nom',
@@ -70,7 +73,8 @@ class RegistrationFormType extends AbstractType
                     new NotBlank([
                         'message' => 'Le nom est obligatoire'
                     ])
-                ]
+                    ],
+                    'required'=>false,
             ])
             ->add('phoneNo', TelType::class, [
                 'label' => 'Votre numéro de téléphone',
@@ -78,7 +82,8 @@ class RegistrationFormType extends AbstractType
                     new NotBlank([
                         'message' => 'Le numéro de téléphone est obligatoire'
                     ])
-                ]
+                    ],
+                    'required'=>false,
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 'label' => 'J\'accepte les termes',
@@ -88,6 +93,7 @@ class RegistrationFormType extends AbstractType
                         'message' => 'Vous devez accepter les termes !',
                     ]),
                 ],
+                'required'=>false,
             ])
 
             ->add('save', SubmitType::class, [

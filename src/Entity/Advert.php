@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\AdvertRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: AdvertRepository::class)]
 class Advert
@@ -15,22 +16,42 @@ class Advert
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Veuill ez saisir le titre')]
     private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\NotBlank(message: 'Veuillez saisir le description')]
     private ?string $text = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Veuillez saisir l\'image (https://picsum.photos/300/200)')]
     private ?string $cover = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank(message: 'Veuillez saisir le numéro de téléphone')]
+    #[Assert\Length(
+        min: 10,
+        max: 14,
+        minMessage: 'Votre numéro de téléphone doit comporter au moins  {{ limit }} chiffres',
+        maxMessage: 'Votre numéro de téléphone doit comporter maximum  {{ limit }} chiffres',
+    )]
     private ?string $phone = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank(message: 'Veuillez saisir le code postal')]
+    #[Assert\Length(
+        min: 5,
+        minMessage: 'Code postal doit comporter au moins  {{ limit }} chiffres'       
+    )]
     private ?int $postCode = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank(message: 'Veuillez saisir le date')]
     private ?\DateTimeImmutable $created_at = null;
+
+    #[ORM\ManyToOne(inversedBy: 'advert')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
 
     public function getId(): ?int
     {
@@ -105,6 +126,18 @@ class Advert
     public function setCreatedAt(\DateTimeImmutable $created_at): self
     {
         $this->created_at = $created_at;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

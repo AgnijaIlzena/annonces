@@ -3,6 +3,6 @@
     height: 300px; width: 100%; display: block;
 }
 
-/* .bi-telephone {
-    margin-right: 20px;
-} */
+main {
+    min-height: calc(100vh - 20vh );
+}

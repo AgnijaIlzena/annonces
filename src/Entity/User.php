@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -40,6 +42,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 255)]
     private ?string $phoneNo = null;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Advert::class, orphanRemoval: true)]
+    private Collection $advert;
+
+    public function __construct()
+    {
+        $this->advert = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -155,6 +165,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPhoneNo(string $phoneNo): self
     {
         $this->phoneNo = $phoneNo;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Advert>
+     */
+    public function getAdvert(): Collection
+    {
+        return $this->advert;
+    }
+
+    public function addAdvert(Advert $advert): self
+    {
+        if (!$this->advert->contains($advert)) {
+            $this->advert->add($advert);
+            $advert->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAdvert(Advert $advert): self
+    {
+        if ($this->advert->removeElement($advert)) {
+            // set the owning side to null (unless already changed)
+            if ($advert->getUser() === $this) {
+                $advert->setUser(null);
+            }
+        }
 
         return $this;
     }

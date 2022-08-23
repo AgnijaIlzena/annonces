@@ -40,7 +40,7 @@ class AdvertFormType extends AbstractType
             ])
             ->add('created_at', DateType::class, [
                 'label'=>'Date de creation d\'annonce',
-                'required'=>false,
+                'required'=>true,
                 'input' => 'datetime_immutable',
                 'widget' => 'single_text' 
             ])

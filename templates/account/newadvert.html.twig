@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle Annonce{% endblock %}
+
+{% block body %}
+{% include 'components/_header.html.twig' %}
+<main role="main">    
+    {% include 'components/_intro.html.twig' %}
+
+    <div class=" text-center pb-5">
+        <div>
+            <h1 class="display-5 m-0">Nouvelle annonce</h1>
+        </div>
+    </div>
+
+    <div class="container mx-auto">
+        {{ form(form) }}
+    </div>
+
+</main>
+{% endblock %}  

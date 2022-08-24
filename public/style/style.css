@@ -1,0 +1,8 @@
+
+.card-img-top{
+    height: 300px; width: 100%; display: block;
+}
+
+main {
+    min-height: calc(100vh - 20vh );
+}

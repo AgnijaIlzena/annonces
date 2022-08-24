@@ -1,0 +1,16 @@
+<section class="text-center">
+  <div class="container py-5">
+          
+    {% if app.user is not null %}
+      <a href="{{path('app_account')}}" class="btn btn-secondary my-2">Vos annonces, {{ app.user.firstName }}  </a>
+      <a href="{{path('app_home')}}" class="btn btn-secondary my-2">Annonces</a>
+      <a href="{{path('new_advert')}}" class="btn btn-primary my-2">Nouvelle annonce</a>
+    {% else %}
+
+      <h1 class="p-5 rounded-3">Au service de votre créativité musicale</h1>
+      <p class="lead text-muted">Que vous cherchiez à repousser les limites de la production musicale ou à faire vos premiers pas dans la musique, le Visual Sound s'adapte à vos envies avec des annoces pertinantes et transforme votre expérience musicale.</p>
+      <p>
+    {% endif %}
+      
+  </div>
+  </section>

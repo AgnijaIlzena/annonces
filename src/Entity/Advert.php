@@ -28,16 +28,6 @@ class Advert
     private ?string $cover = null;
 
     #[ORM\Column]
-    #[Assert\NotBlank(message: 'Veuillez saisir le numéro de téléphone')]
-    #[Assert\Length(
-        min: 10,
-        max: 14,
-        minMessage: 'Votre numéro de téléphone doit comporter au moins  {{ limit }} chiffres',
-        maxMessage: 'Votre numéro de téléphone doit comporter maximum  {{ limit }} chiffres',
-    )]
-    private ?string $phone = null;
-
-    #[ORM\Column]
     #[Assert\NotBlank(message: 'Veuillez saisir le code postal')]
     #[Assert\Length(
         min: 5,

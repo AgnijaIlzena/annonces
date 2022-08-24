@@ -17,7 +17,7 @@
           {% for advert in adverts %}
             <div class="col-lg-6 col-xl-4">
               <div class="card mb-4 border-0 shadow-sm">
-                <img class="card-img-to" data-src="https://picsum.photos/300/200" alt=""  src="https://picsum.photos/300/200" data-holder-rendered="true">
+                <img class="card-img-to" data-src="{{advert.cover}}" alt="{{advert.title}}"  src="{{advert.cover}}" data-holder-rendered="true">
                 <div class="card-body">
                   <h1>{{advert.title}}</h1>
                   <div class="row">

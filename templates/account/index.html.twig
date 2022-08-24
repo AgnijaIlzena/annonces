@@ -22,7 +22,7 @@
           {% for advert in app.user.advert %}
             <div class="col-lg-6 col-xl-4">
               <div class="card mb-4 border-0 shadow-sm">
-                <img class="card-img-to" data-src="https://picsum.photos/300/200" alt=""  src="https://picsum.photos/300/200" data-holder-rendered="true">
+                <img class="card-img-to" data-src="{{advert.cover}}" alt="{{advert.title}}"  src="{{advert.cover}}" data-holder-rendered="true">
                 <div class="card-body">
                   <h1>{{advert.title}}</h1>
                   <div class="row">
@@ -39,7 +39,7 @@
                     </div>  
                   </div>                
                   
-                  <p class="card-text">{{advert.text|u.truncate(150, '...', false)}}</p>
+                  <p class="card-text">{{advert.text|u.truncate(75, '...', false)}}</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                       <a href="{{path('advert_details', {id: advert.id})}}" class="btn btn-sm btn-outline-secondary">Details</a>

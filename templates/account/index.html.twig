@@ -46,7 +46,7 @@
                       
                          {% if app.user is not null %}
                         <a href="{{path('advert_edit', {id: advert.id})}}" class="btn btn-sm btn-outline-secondary">Editer</a>
-                        <form action="{{ path('advert_delete', { id: advert.id } )}}" method="post" >																					
+                        <form action="{{ path('advert_delete', { id: advert.id } )}}" method="post" onsubmit="return confirm('Êtes-vous sûr de bien vouloir supprimer cet élément?')" >																					
 													<input type="hidden" name="token" value="{{ csrf_token('delete-advert-'~ advert.id) }}">
 													<button  class="btn btn-sm btn-outline-secondary">
 														Supprimer

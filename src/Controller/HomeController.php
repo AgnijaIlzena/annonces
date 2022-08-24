@@ -10,7 +10,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
 
 class HomeController extends AbstractController
 {
@@ -35,10 +34,12 @@ class HomeController extends AbstractController
        {
         $advert = $advertRepository->find($id);
         // option to seperate plain text in paragraphs for convenient readibility
+        if ($advert) {
         $textParagraphs = explode("\r\n", $advert->getText());
+       
         // show usersPhone number with advert
         $userPhone = $advert->getUser()->getPhoneNo();
-    
+    }
         return $this->render('home/detailsAdvert.html.twig', [
             'advert' => $advert,
             'id'=>$id,

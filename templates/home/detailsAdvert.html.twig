@@ -7,7 +7,7 @@
 <main role="main">
   {% include 'components/_intro.html.twig' %}
 
-      <section id="">
+      <section>
         <div class="container">
             <h2 class="section-title text-center">{{advert.title}}</h2>                    
         </div>
@@ -26,13 +26,15 @@
                     </small>
                 </div>
         <div class="container col mx-auto col-md-6 col-lg-4 ">   
-            {% for paragraph in paragraphs %} 
-            <p>{{paragraph}}</p>
-            {% endfor %} 
+            {% if paragraphs is not null %}
+                {% for paragraph in paragraphs %} 
+                <p>{{paragraph}}</p>
+                {% endfor %} 
+            {% endif %}
              {% if app.user is not null %}
-             <a class="text-muted" href="{{ path('app_account')}}">Retour aux vos annonces </a>
+                <a class="text-muted" href="{{ path('app_account')}}">Retour aux vos annonces </a>
              {% else %}
-            <a class="text-muted" href="{{ path('app_home')}}">Retour aux annonces </a>
+                <a class="text-muted" href="{{ path('app_home')}}">Retour aux annonces </a>
             {% endif %}
             <div class="text-center py-4">
                 <img src="https://picsum.photos/300/200" alt="{{advert.title}}"> 

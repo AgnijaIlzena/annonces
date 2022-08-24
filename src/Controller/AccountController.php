@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Advert;
 use App\Form\AdvertFormType;
 use App\Repository\AdvertRepository;
+use App\Repository\UserRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -17,10 +18,10 @@ class AccountController extends AbstractController
     // show intro text for user in users accounts' space 
     #[Route('/account', name: 'app_account')]
     #[IsGranted('ROLE_USER')]
-    public function show(): Response
+    public function show( UserRepository $userRepository): Response
     {
-        $greeting = 'Bonjour, ';        
-
+        $greeting = 'Bonjour, ';     
+        
         return $this->render('account/index.html.twig', [
             'greeting' => $greeting,
          ]);

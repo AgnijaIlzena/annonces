@@ -30,10 +30,6 @@ class AdvertFormType extends AbstractType
                 'label' => 'Image d\'annonce',
                 'required'=>false
             ])
-            ->add('phone', TelType::class, [
-                'label'=> 'Votre numero de telephone',
-                'required'=>false
-            ])
             ->add('postCode', NumberType::class, [
                 'label'=>'Code postal',
                 'required'=>false
